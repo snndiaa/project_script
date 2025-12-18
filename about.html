@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About Us | Beauty Salon (Dev)</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+            color: #333;
+        }
+
+        header {
+            background: #1a1a1a;
+            padding: 20px 0;
+            color: white;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .nav-placeholder {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+        }
+
+        .about-header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 60px 20px;
+            margin-bottom: 40px;
+        }
+
+        .cards-layout {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 20px;
+            margin-bottom: 50px;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 30px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            border-top: 3px solid #d4a574;
+            transition: transform 0.3s;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .card-title {
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin: 15px 0;
+            color: #d4a574;
+        }
+
+        .consultation {
+            background: #fff;
+            padding: 50px 0;
+            text-align: center;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            text-align: left;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .search-input {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+
+        button.bt {
+            background-color: #d4a574;
+            color: white;
+            border: none;
+            padding: 12px 30px;
+            font-size: 16px;
+            width: 100%;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .form-note {
+            margin-top: 15px;
+            color: #999;
+            font-size: 14px;
+            text-align: center;
+        }
+
+        footer {
+            background: #222;
+            color: #aaa;
+            padding: 40px 0;
+            margin-top: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <div class="container nav-placeholder">
+        <h2>BEAUTY SALON</h2>
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="about.html" style="color: #d4a574;">About</a>
+            <a href="#">Services</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </div>
+</header>
+
+<section>
+    <div class="about-header">
+        <h1>About Us</h1>
+        <p>Our story and values (Content pending...)</p>
+    </div>
+
+    <div class="container">
+        <div id="features-container" class="cards-layout"></div>
+    </div>
+</section>
+
+<section class="consultation" id="contact">
+    <div class="container">
+        <h1>Ready to Book?</h1>
+        <p>Leave your details below.</p>
+        
+        <div class="form-container">
+            <form>
+                <div class="input-group">
+                    <label>Name</label>
+                    <input type="text" class="search-input" disabled />
+                </div>
+
+                <div class="input-group">
+                    <label>E-mail</label>
+                    <input type="email" class="search-input" disabled />
+                </div>
+
+                <div class="input-group">
+                    <label>Phone</label>
+                    <input type="tel" class="search-input" disabled />
+                </div>
+
+                <button class="bt" disabled>SEND MESSAGE</button>
+            </form>
+
+            <div class="form-note">
+                Registration form is under development
+            </div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="container">
+        <p>Beauty Salon &copy; 2025</p>
+        <p>Odessa, Sadovaya Street, 3</p>
+    </div>
+</footer>
+
+<script>
+    const featuresData = [
+        {
+            title: "Premium Beauty Services",
+            text: "Offering comprehensive care services across all major beauty categories.",
+            icon: "fa-gem"
+        },
+        {
+            title: "Innovation and Quality",
+            text: "We use modern techniques and premium cosmetics.",
+            icon: "fa-star"
+        },
+        {
+            title: "Comfort and Relaxation",
+            text: "A calm atmosphere with professional staff.",
+            icon: "fa-spa"
+        }
+    ];
+
+    const featuresContainer = document.getElementById('features-container');
+
+    featuresData.forEach(item => {
+        featuresContainer.innerHTML += `
+            <div class="feature-card">
+                <div style="font-size:40px;color:#d4a574;margin-bottom:20px;">
+                    <i class="fa-solid ${item.icon}"></i>
+                </div>
+                <div class="card-title">${item.title}</div>
+                <p>${item.text}</p>
+            </div>
+        `;
+    });
+</script>
+
+</body>
+</html>
