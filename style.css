@@ -838,10 +838,102 @@ a {
     box-shadow: 0 4px 15px rgba(212, 165, 116, 0.2);
 }
 
+/* === RUNNING LINE (INFINITE LOOP) === */
+.ticker-wrap {
+    width: 100%;
+    background-color: #d4a574;
+    overflow: hidden;
+    height: 40px;
+    position: relative;
+    z-index: 99;
+}
+
+.ticker-move {
+    display: inline-flex;
+    white-space: nowrap;
+    animation: ticker 20s linear infinite;
+}
+
+.ticker-item {
+    display: inline-block;
+    padding: 0 2rem;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1a1a1a;
+    text-transform: uppercase;
+    line-height: 40px;
+}
+
+@keyframes ticker {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+.ticker-wrap:hover .ticker-move {
+    animation-play-state: paused;
+}
+
+/* === SIMPLE SNOW === */
+.snowflake {
+    position: fixed;
+    top: -10px;
+    background-color: #fff;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 9999;
+    animation: fall linear forwards;
+}
+
+/* === SNOW TOGGLE BUTTON === */
+.snow-toggle {
+    position: fixed;
+    bottom: 90px;
+    right: 30px;
+    background-color: #ffffff;
+    color: #d4a574;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    transition: all 0.3s ease;
+    z-index: 10000;
+}
+
+.snow-toggle:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+}
+
+.snow-toggle.off {
+    color: #ccc;
+    background-color: #f0f0f0;
+}
+
+@keyframes fall {
+    0% {
+        transform: translateY(-10px);
+    }
+
+    100% {
+        transform: translateY(105vh);
+    }
+}
+
 /* === CONTACT PAGE === */
 .consultation {
     background: url(../img/consultation.png) no-repeat center/100%;
-    padding: 160px 20px 280px;
+    padding: 160px 20px 80px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -1131,6 +1223,115 @@ a {
 .footer-column a:hover {
     color: #d4a574;
 }
+
+.stars {
+    color: #d4a574;
+    font-size: 20px;
+    margin-bottom: 10px;
+    letter-spacing: 2px;
+}
+
+.testimonial-card {
+    text-align: center;
+    border: 1px solid rgba(212, 165, 116, 0.5);
+}
+
+.cta-section {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), url('img/bg_new.png');
+    /* Используем ваш фон */
+    background-size: cover;
+    background-position: center;
+    padding: 80px 20px;
+    text-align: center;
+    margin: 60px 0;
+}
+
+.cta-content h2 {
+    font-family: "Poiret One", cursive;
+    font-size: 42px;
+    color: #fff;
+    margin-bottom: 20px;
+}
+
+.cta-content p {
+    font-size: 18px;
+    color: #f0f0f0;
+    margin-bottom: 30px;
+}
+
+/* === FAQ SECTION === */
+.faq-section {
+    padding: 60px 20px;
+    background-color: #1a1a1a;
+}
+
+.faq-container {
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faq-item {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(212, 165, 116, 0.3);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+}
+
+.faq-item:hover {
+    border-color: #d4a574;
+}
+
+.faq-question {
+    width: 100%;
+    background: none;
+    border: none;
+    padding: 20px 25px;
+    text-align: left;
+    font-size: 18px;
+    font-weight: 500;
+    color: #ffffff;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: "Montserrat", sans-serif;
+    transition: color 0.3s ease;
+}
+
+.faq-question:hover {
+    color: #d4a574;
+}
+
+.faq-icon {
+    color: #d4a574;
+    font-size: 16px;
+    transition: transform 0.3s ease;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out, padding 0.3s ease;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.faq-answer p {
+    padding: 0 25px 25px 25px;
+    margin: 0;
+    color: #f0f0f0;
+    font-size: 16px;
+    line-height: 1.6;
+    opacity: 0.9;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+}
+
 
 /* === FOOTER === */
 .footer {
