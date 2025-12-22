@@ -920,6 +920,99 @@ a {
     background-color: #f0f0f0;
 }
 
+
+/* === SUCCESS MODAL === */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 20000;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.modal-overlay.show {
+    display: flex;
+    opacity: 1;
+}
+
+.modal-content {
+    background-color: #1a1a1a;
+    border: 2px solid #d4a574;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+    position: relative;
+    box-shadow: 0 10px 30px rgba(212, 165, 116, 0.2);
+    transform: translateY(20px);
+    transition: transform 0.3s ease;
+}
+
+.modal-overlay.show .modal-content {
+    transform: translateY(0);
+}
+
+.modal-icon {
+    font-size: 60px;
+    color: #d4a574;
+    margin-bottom: 20px;
+}
+
+.modal-content h3 {
+    font-family: "Poiret One", cursive;
+    color: #fff;
+    font-size: 32px;
+    margin-bottom: 15px;
+}
+
+.modal-content p {
+    color: #f0f0f0;
+    font-size: 16px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 30px;
+    color: #888;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.close-modal:hover {
+    color: #d4a574;
+}
+
+.modal-btn-ok {
+    background: #d4a574;
+    color: #1a1a1a;
+    border: none;
+    padding: 12px 30px;
+    font-size: 16px;
+    font-weight: 700;
+    border-radius: 30px;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: transform 0.2s, background 0.2s;
+}
+
+.modal-btn-ok:hover {
+    background: #fff;
+    transform: scale(1.05);
+}
+
+
 @keyframes fall {
     0% {
         transform: translateY(-10px);
