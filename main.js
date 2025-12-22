@@ -130,51 +130,79 @@ snowBtn.addEventListener('click', () => {
 document.addEventListener('DOMContentLoaded', () => {
     const sendBtn = document.querySelector('.bt');
     const modal = document.getElementById('successModal');
+
     if (sendBtn && modal) {
-        const inputs = document.querySelectorAll('.search-input');
+        const nameInput = document.getElementById('name');
+        const emailInput = document.getElementById('email');
+        const phoneInput = document.getElementById('phone');
+        const msgInput = document.getElementById('question');
+
         const closeBtn = document.querySelector('.close-modal');
         const okBtn = document.querySelector('.modal-btn-ok');
 
+        const showError = (input) => {
+            input.classList.add('error');
+            input.addEventListener('input', () => {
+                input.classList.remove('error');
+            }, { once: true });
+        };
+
+        const isValidEmail = (email) => {
+            return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+        };
+
+        const isValidPhone = (phone) => {
+            const cleanPhone = phone.replace(/[^\d]/g, '');
+            return cleanPhone.length >= 10 && /^[\d\+\-\(\)\s]+$/.test(phone);
+        };
+
         const closeModal = () => {
             modal.classList.remove('show');
-            setTimeout(() => {
-                modal.style.display = 'none';
-            }, 300);
+            setTimeout(() => { modal.style.display = 'none'; }, 300);
         };
 
         sendBtn.addEventListener('click', (e) => {
             e.preventDefault();
 
-            let allFilled = true;
+            let isValid = true;
 
-            inputs.forEach(input => {
-                if (input.value.trim() === '') {
-                    allFilled = false;
-                    input.style.borderColor = 'red';
-                } else {
-                    input.style.borderColor = '';
-                }
-            });
+            if (nameInput.value.trim().length < 2) {
+                showError(nameInput);
+                isValid = false;
+            }
 
-            if (!allFilled) {
-                alert('Please fill in all fields correctly.');
+            if (!isValidEmail(emailInput.value.trim())) {
+                showError(emailInput);
+                isValid = false;
+            }
+
+            if (!isValidPhone(phoneInput.value.trim())) {
+                showError(phoneInput);
+                isValid = false;
+            }
+
+            if (msgInput.value.trim() === '') {
+                showError(msgInput);
+                isValid = false;
+            }
+
+            if (!isValid) {
                 return;
             }
 
-            inputs.forEach(input => input.value = '');
+            nameInput.value = '';
+            emailInput.value = '';
+            phoneInput.value = '';
+            msgInput.value = '';
 
             modal.style.display = 'flex';
-            setTimeout(() => {
-                modal.classList.add('show');
-            }, 10);
+            setTimeout(() => { modal.classList.add('show'); }, 10);
         });
 
         closeBtn.addEventListener('click', closeModal);
         okBtn.addEventListener('click', closeModal);
         modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                closeModal();
-            }
+            if (e.target === modal) closeModal();
         });
     }
 });

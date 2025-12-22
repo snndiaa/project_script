@@ -1012,6 +1012,35 @@ a {
     transform: scale(1.05);
 }
 
+.search-input.error {
+    border-color: #ff4d4d !important;
+    box-shadow: 0 0 8px rgba(255, 77, 77, 0.4);
+    animation: shake 0.4s ease-in-out;
+}
+
+@keyframes shake {
+
+    0%,
+    100% {
+        transform: translateX(0);
+    }
+
+    20% {
+        transform: translateX(-10px);
+    }
+
+    40% {
+        transform: translateX(10px);
+    }
+
+    60% {
+        transform: translateX(-5px);
+    }
+
+    80% {
+        transform: translateX(5px);
+    }
+}
 
 @keyframes fall {
     0% {
