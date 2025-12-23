@@ -33,7 +33,6 @@
                                     <li><a href="index.html">Home</a></li>
                                     <li><a href="about.html">About Us</a></li>
                                     <li><a href="practice-areas.html">Practice Areas</a></li>
-                                    <li><a href="methodology.html">Unique Methodology</a></li>
                                     <li><a href="team.html">Team</a></li>
                                     <li><a href="experience.html">Experience</a></li>
                                 </ul>
@@ -73,13 +72,15 @@
         </ul>
     </div>
 
-    <section>
-        <div class="about-us-bg" style="background-image: url('img/bg_new.png');">
-            <div class="about-us-text">
-                <h1>Our Services</h1>
-                <p>Comprehensive beauty and wellness treatments for complete transformation.</p>
-            </div>
+    <div class="home-bg" src="img/bg_new.png">
+        <div class="about-us-text">
+            <h2>Experience</h2>
+            <p>Comprehensive beauty and wellness treatments for complete transformation.</p>
+            <hr />
         </div>
+    </div>
+
+    <section>
 
         <div class="methodology-container">
 
@@ -139,46 +140,102 @@
             </div>
 
         </div>
-
-        <hr class="section-line">
     </section>
 
-    <section class="consultation">
-        <div class="wrapper">
-            <h1 class="consultation__title">
-                Book Your Service Today
-                <p>Fill out the form below and we'll get back to you within
-                    24 hours!</p>
-            </h1>
+    <section class="gallery-section">
+        <div class="manifest__wrapper">
+            <h2 class="manifest__title" style="text-align: center; margin-bottom: 50px;">Our Work Gallery</h2>
 
-            <div class="search-container">
+            <div class="gallery-grid" id="galleryGrid">
+                <figure class="gallery-item item-big">
+                    <img src="img/pug.webp" alt="Work 1">
+                    <figcaption>Hair Styling</figcaption>
+                </figure>
+                <figure class="gallery-item item-tall">
+                    <img src="img/crative-coloring.webp" alt="Work 2">
+                    <figcaption>Creative Coloring</figcaption>
+                </figure>
 
-                <div class="input-group">
-                    <input type="text" id="name" name="name" class="search-input" placeholder=" " required />
-                    <label class="label" for="name">Name</label>
-                </div>
+                <figure class="gallery-item item-wide">
+                    <img src="img/manicure-man.webp" alt="Work 3">
+                    <figcaption>Nail Art</figcaption>
+                </figure>
+                <figure class="gallery-item item-wide">
+                    <img src="img/evening-makeup.webp" alt="Work 4">
+                    <figcaption>Evening Makeup</figcaption>
+                </figure>
 
-                <div class="input-group">
-                    <input type="email" id="email" name="email" class="search-input" placeholder=" " required />
-                    <label class="label" for="email">E-mail</label>
-                </div>
+                <figure class="gallery-item item-normal">
+                    <img src="img/brows.webp" alt="Work 5">
+                    <figcaption>Brow Shaping</figcaption>
+                </figure>
+                <figure class="gallery-item item-normal">
+                    <img src="img/lash.avif" alt="Work 6">
+                    <figcaption>Lash Extension</figcaption>
+                </figure>
+                <figure class="gallery-item item-normal">
+                    <img src="img/spa-leg.webp" alt="Work 7">
+                    <figcaption>Spa Pedicure</figcaption>
+                </figure>
 
-                <div class="input-group">
-                    <input type="tel" id="phone" name="phone" class="search-input" placeholder=" " required />
-                    <label class="label" for="phone">Phone number</label>
-                </div>
 
-                <div class="input-group">
-                    <input type="text" id="question" name="question" class="search-input" placeholder=" " required />
-                    <label class="label" for="question">Message</label>
-                </div>
+                <figure class="gallery-item item-tall gallery-hidden">
+                    <img src="img/advanced-facial.webp" alt="Work 8">
+                    <figcaption>Advanced Facial</figcaption>
+                </figure>
+                <figure class="gallery-item item-big gallery-hidden">
+                    <img src="img/wedding.jpeg" alt="Work 9">
+                    <figcaption>Wedding Stylist</figcaption>
+                </figure>
 
-                <button class="bt">
-                    <span class="msg" id="msg"></span>
-                    SEND
-                </button>
+                <figure class="gallery-item item-normal gallery-hidden">
+                    <img src="img/care-procedure.avif" alt="Work 10">
+                    <figcaption>Care Procedures</figcaption>
+                </figure>
+                <figure class="gallery-item item-normal gallery-hidden">
+                    <img src="img/massage.jpg" alt="Work 11">
+                    <figcaption>Massage</figcaption>
+                </figure>
+                <figure class="gallery-item item-normal gallery-hidden">
+                    <img src="img/consultation.jpg" alt="Work 12">
+                    <figcaption>Consultation</figcaption>
+                </figure>
+
             </div>
 
+            <div class="gallery-button-wrapper">
+                <a href="#" id="galleryToggleBtn" class="main-button js-gallery-toggle">
+                    <span class="theme-btn btn-text">Show All Works</span>
+                    <span class="arrow-btn btn-icon"><i class="fas fa-arrow-down"></i></span>
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <section class="testimonials" style="margin-top: 50px;">
+        <div class="manifest__wrapper">
+            <h2 class="manifest__title">What Our Clients Say</h2>
+            <div class="manifest__grid">
+                <div class="manifest__item testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="manifest__text">"Amazing service! The stylists took all my hair color wishes into account.
+                        The atmosphere in the salon is pure relaxation."</p>
+                    <h4 class="manifest__heading" style="margin-top: 15px;">— Anna K.</h4>
+                </div>
+                <div class="manifest__item testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="manifest__text">"The best manicure in the city. The tools are sterile, and there is a huge
+                        selection of polishes. I highly recommend it!"</p>
+                    <h4 class="manifest__heading" style="margin-top: 15px;">— Elena M.</h4>
+                </div>
+                <div class="manifest__item testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="manifest__text">"I've been coming here for a massage for six months now. My back has
+                        stopped hurting, and I'm very satisfied with the service."</p>
+                    <h4 class="manifest__heading" style="margin-top: 15px;">— Dmitry V.</h4>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -205,7 +262,6 @@
                     <a href="/experience.html">Experience</a>
                 </div>
                 <div class="footer-column">
-                    <a href="/methodology.html">Unique Methodology</a>
                     <a href="/team.html">Team</a>
                     <a href="/contact.html">Contact</a>
                 </div>
