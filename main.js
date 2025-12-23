@@ -262,3 +262,225 @@ if (toggleBtnWrapper) {
         }
     });
 }
+
+
+document.addEventListener('DOMContentLoaded', () => {
+    const mapFrame = document.getElementById('mapFrame');
+    const mapTabs = document.querySelectorAll('.map-tab-btn');
+
+    const mapUrls = {
+        'odessa': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2747.664673322192!2d30.73262031559868!3d46.48464397912626!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40c631904a434773%3A0x6334237748438258!2sSadova%20St%2C%203%2C%20Odesa%2C%20Odeska%20oblast%2C%20Ukraine%2C%2065000!5e0!3m2!1sen!2sua!4v1620000000000!5m2!1sen!2sua',
+
+        'tbilisi': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2978.293308331166!2d44.7833!3d41.7166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40440cd7e64f626b%3A0x61d084ede2576ea3!2sTbilisi%2C%20Georgia!5e0!3m2!1sen!2sge!4v1620000000000!5m2!1sen!2sge',
+
+        'bucharest': 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d365280.9754382103!2d25.928574457782637!3d44.43774010000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40b1f93abf3cad4f%3A0xac0632e37c9ca628!2sBucharest%2C%20Romania!5e0!3m2!1sen!2sro!4v1620000000000!5m2!1sen!2sro'
+    };
+
+    if (mapFrame && mapTabs.length > 0) {
+        mapTabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                mapTabs.forEach(t => t.classList.remove('active'));
+
+                tab.classList.add('active');
+
+                const city = tab.getAttribute('data-city');
+
+                if (mapUrls[city]) {
+                    mapFrame.style.opacity = '0.5';
+
+                    setTimeout(() => {
+                        mapFrame.src = mapUrls[city];
+                        mapFrame.onload = () => {
+                            mapFrame.style.opacity = '1';
+                        };
+                        setTimeout(() => mapFrame.style.opacity = '1', 500);
+                    }, 200);
+                }
+            });
+        });
+    }
+});
+
+
+
+
+
+
+
+document.addEventListener('DOMContentLoaded', () => {
+
+
+    const prizes = [
+        { label: '5%', code: 'BEAUTY5', color: '#1a1a1a', text: '#d4a574' },
+        { label: '10%', code: 'BEAUTY10', color: '#d4a574', text: '#1a1a1a' },
+        { label: 'Try Again', code: null, color: '#1a1a1a', text: '#ffffff' },
+
+        { label: '15%', code: 'BEAUTY15', color: '#d4a574', text: '#1a1a1a' },
+        { label: '20%', code: 'BEAUTY20', color: '#1a1a1a', text: '#d4a574' },
+        { label: 'FREE SPA', code: 'FREESPA', color: '#d4a574', text: '#1a1a1a' }
+    ];
+
+    const canvas = document.getElementById('wheelCanvas');
+    const spinBtn = document.getElementById('spinBtn');
+    const prizeModal = document.getElementById('prizeModal');
+
+
+
+    const prizeValueEl = document.getElementById('prizeValue');
+    const promoInput = document.getElementById('promoInput');
+    const copyBtn = document.getElementById('copyBtn');
+
+
+
+    const modalIcon = document.querySelector('.modal-icon i');
+    const modalTitle = document.querySelector('.prize-content h3');
+    const modalText = document.querySelector('.prize-content p');
+
+    const promoText = document.querySelector('.prize-content p:nth-of-type(2)');
+
+    const promoBox = document.querySelector('.promo-box');
+
+    if (canvas && spinBtn) {
+        const ctx = canvas.getContext('2d');
+        let currentRotation = 0;
+        let isSpinning = false;
+        const slices = prizes.length;
+        const sliceDeg = 360 / slices;
+        const centerX = canvas.width / 2;
+        const centerY = canvas.height / 2;
+        const radius = canvas.width / 2;
+
+
+
+        function drawWheel() {
+            prizes.forEach((prize, i) => {
+                const startAngle = (i * sliceDeg * Math.PI) / 180;
+                const endAngle = ((i + 1) * sliceDeg * Math.PI) / 180;
+
+                ctx.beginPath();
+                ctx.moveTo(centerX, centerY);
+                ctx.arc(centerX, centerY, radius, startAngle, endAngle);
+                ctx.fillStyle = prize.color;
+                ctx.fill();
+                ctx.stroke();
+
+                ctx.save();
+                ctx.translate(centerX, centerY);
+                ctx.rotate(startAngle + (sliceDeg * Math.PI) / 360);
+                ctx.textAlign = "right";
+                ctx.fillStyle = prize.text;
+                ctx.font = "bold 28px Montserrat";
+                ctx.fillText(prize.label, radius - 20, 10);
+                ctx.restore();
+            });
+        }
+        drawWheel();
+
+
+
+        spinBtn.addEventListener('click', () => {
+            if (isSpinning) return;
+            isSpinning = true;
+            spinBtn.style.opacity = '0.5';
+
+
+            const randomDeg = Math.floor(1800 + Math.random() * 360);
+            currentRotation += randomDeg;
+            canvas.style.transform = `rotate(${currentRotation}deg)`;
+
+            setTimeout(() => {
+                isSpinning = false;
+                spinBtn.style.opacity = '1';
+                showResult(currentRotation);
+            }, 4000);
+        });
+
+
+
+        function showResult(rotation) {
+            const actualDeg = rotation % 360;
+            const index = Math.floor((360 - (actualDeg % 360)) / sliceDeg);
+            const winningPrize = prizes[index % prizes.length];
+
+            if (prizeModal) {
+
+
+                if (winningPrize.code) {
+                    modalIcon.className = 'fas fa-trophy';
+
+                    modalTitle.textContent = 'Congratulations!';
+                    modalText.textContent = 'You won a discount:';
+                    prizeValueEl.textContent = winningPrize.label + " OFF";
+
+
+
+                    promoText.style.display = 'block';
+                    promoBox.style.display = 'flex';
+                    promoInput.value = winningPrize.code;
+                }
+
+
+                else {
+                    modalIcon.className = 'fas fa-star-half-alt';
+
+                    modalTitle.textContent = 'So Close!';
+                    modalText.textContent = 'Luck is saving itself for next time!';
+                    prizeValueEl.textContent = "Try Again";
+
+
+
+                    promoText.style.display = 'none';
+                    promoBox.style.display = 'none';
+                }
+
+
+
+                prizeModal.style.display = 'flex';
+                setTimeout(() => { prizeModal.classList.add('show'); }, 10);
+            }
+        }
+    }
+
+
+
+    if (prizeModal) {
+        const closePrize = () => {
+            prizeModal.classList.remove('show');
+            setTimeout(() => { prizeModal.style.display = 'none'; }, 300);
+        };
+
+        const closeBtn = document.querySelector('.close-prize');
+        const okBtn = document.querySelector('.close-prize-btn');
+
+        if (closeBtn) closeBtn.addEventListener('click', closePrize);
+        if (okBtn) okBtn.addEventListener('click', closePrize);
+        window.addEventListener('click', (e) => {
+            if (e.target == prizeModal) closePrize();
+        });
+
+
+
+        if (copyBtn) {
+            copyBtn.addEventListener('click', () => {
+                promoInput.select();
+                document.execCommand('copy');
+                const originalHTML = copyBtn.innerHTML;
+                copyBtn.innerHTML = '<i class="fas fa-check"></i>';
+                setTimeout(() => { copyBtn.innerHTML = originalHTML; }, 2000);
+            });
+        }
+    }
+
+
+
+    const fortuneBtn = document.querySelector('.fortune-scroll-btn');
+    if (fortuneBtn) {
+        fortuneBtn.addEventListener('click', (e) => {
+            e.preventDefault();
+            const section = document.getElementById('fortuneSection');
+            if (section) {
+                section.scrollIntoView({ behavior: 'smooth' });
+            }
+        });
+    }
+});
