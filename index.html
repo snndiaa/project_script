@@ -17,40 +17,41 @@
 
     <header>
         <div class="container-fluid">
-            <div class="header-main">
-                <div class="logo">
-                    <a href="index.html" class="header-logo-3">
-                        <img src="img/arizona_logo.png" style="width:auto; height: 90px;" alt="Logo">
-                    </a>
-                </div>
-
-                <div class="menu-wrapper">
-                    <div class="main-menu">
-                        <nav aria-label="Primary">
-                            <ul>
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="about.html">About Us</a></li>
-                                <li><a href="practice-areas.html">Practice Areas</a></li>
-                                <li><a href="team.html">Team</a></li>
-                                <li><a href="experience.html">Experience</a></li>
-                                <li><a href="contact.html">Contact</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                </div>
-
-                <div class="header-right d-flex justify-content-end align-items-center">
-                    <div class="main-button d-none d-xl-block">
-                        <a href="contact.html">
-                            <span class="theme-btn">Contact Us</span>
-                            <span class="arrow-btn"><i class="fa-regular fa-arrow-right"></i></span>
+            <div class="mega-menu-wrapper">
+                <div class="header-main">
+                    <div class="logo">
+                        <a href="index.html" class="header-logo-3">
+                            <img src="img/arizona_logo.png" style="width:auto; height: 90px;">
                         </a>
                     </div>
 
-                    <div class="header-hamburger d-xl-none my-auto">
-                        <label for="menuToggle" class="navbar-toggler" aria-label="Toggle navigation">
-                            <i class="fas fa-bars"></i>
-                        </label>
+                    <div class="menu-wrapper">
+                        <div class="main-menu">
+                            <nav id="mobile-menu" aria-label="Primary">
+                                <ul>
+                                    <li><a href="index.html">Home</a></li>
+                                    <li><a href="about.html">About Us</a></li>
+                                    <li><a href="practice-areas.html">Practice Areas</a></li>
+                                    <li><a href="team.html">Team</a></li>
+                                    <li><a href="experience.html">Experience</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+
+                    <div class="header-right d-flex justify-content-end align-items-center">
+                        <div class="main-button d-none d-xl-block">
+                            <a href="contact.html">
+                                <span class="theme-btn">Contact Us</span>
+                                <span class="arrow-btn"><i class="fa-regular fa-arrow-up-right"></i></span>
+                            </a>
+                        </div>
+
+                        <div class="header-hamburger d-xl-none my-auto">
+                            <label for="menuToggle" class="navbar-toggler" aria-label="Toggle navigation">
+                                <i class="fas fa-bars"></i>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -58,23 +59,23 @@
     </header>
 
     <div class="navbar-collapse" id="navbarToggleExternalContent">
-        <label for="menuToggle" class="menu-close">×</label>
+        <label for="menuToggle" class="menu-close">&times;</label>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="about.html">About Us</a></li>
             <li><a href="practice-areas.html">Practice Areas</a></li>
             <li><a href="team.html">Team</a></li>
             <li><a href="experience.html">Experience</a></li>
-            <li><a href="contact.html">Contact</a></li>
         </ul>
     </div>
 
-    <div class="home-bg">
-        <div class="about-us-text">
-            <h1>Beauty Salon</h1>
-            <p>Your Journey to Perfection Starts Here</p>
+    <div class="about-us-bg" src="img/bg_new.png">
+            <div class="about-us-text">
+                <h2>Chepoux</h2>
+                <p>Lead Stylist & Color Specialist</p>
+                <hr />
+            </div>
         </div>
-    </div>
 
     <section class="manifest">
         <div class="manifest__wrapper">
@@ -150,32 +151,6 @@
         </div>
     </section>
 
-    <section class="testimonials">
-        <div class="manifest__wrapper">
-            <h2 class="manifest__title">What Clients Say</h2>
-            <div class="manifest__grid">
-                <div class="manifest__item testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="manifest__text">"Amazing service! The atmosphere is so relaxing and the staff is
-                        incredibly professional."</p>
-                    <h4 class="manifest__heading" style="margin-top: 15px;">— Anna K.</h4>
-                </div>
-                <div class="manifest__item testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="manifest__text">"Best manicure in the city. I love the attention to detail and
-                        sterilization standards."</p>
-                    <h4 class="manifest__heading" style="margin-top: 15px;">— Elena M.</h4>
-                </div>
-                <div class="manifest__item testimonial-card">
-                    <div class="stars">★★★★★</div>
-                    <p class="manifest__text">"My hair has never looked better. Thank you for the wonderful
-                        transformation!"</p>
-                    <h4 class="manifest__heading" style="margin-top: 15px;">— Julia S.</h4>
-                </div>
-            </div>
-        </div>
-    </section>
-
     <section id="fortuneSection" class="fortune-section">
         <div class="manifest__wrapper">
             <h2 class="manifest__title">Test Your Luck</h2>
@@ -205,44 +180,6 @@
                     <span class="theme-btn">Book Now</span>
                     <span class="arrow-btn"><i class="fa-regular fa-calendar-check"></i></span>
                 </a>
-            </div>
-        </div>
-    </section>
-
-    <section class="faq-section">
-        <div class="manifest__wrapper">
-            <h2 class="manifest__title">Frequently Asked Questions</h2>
-
-            <div class="faq-container">
-                <div class="faq-item">
-                    <button class="faq-question">
-                        What brands do you use?
-                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>We work with premium international brands such as Kevin Murphy, Davines, and Luxio.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        Do I need to book in advance?
-                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Yes, we recommend booking 2-3 days in advance to ensure availability.</p>
-                    </div>
-                </div>
-
-                <div class="faq-item">
-                    <button class="faq-question">
-                        What is your cancellation policy?
-                        <span class="faq-icon"><i class="fas fa-plus"></i></span>
-                    </button>
-                    <div class="faq-answer">
-                        <p>Please notify us at least 24 hours in advance if you need to reschedule.</p>
-                    </div>
-                </div>
             </div>
         </div>
     </section>
